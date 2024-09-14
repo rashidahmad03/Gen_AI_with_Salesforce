@@ -1,0 +1,28 @@
+<template>
+    <div class="slds-card slds-scrollable  slds-float_left" style ="width: 450px;">
+    <div class="slds-col slds-size_1-of-4 slds-align-bottom slds-var-p-top_medium">
+        <lightning-button label="Summery" onclick={handleSendMessage} variant="brand"></lightning-button>
+    </div>
+    <div class="slds-col slds-size_1-of-4 slds-align-bottom slds-var-p-top_medium">
+        <lightning-button label="Draft Email" onclick={draftemail} variant="brand"></lightning-button>
+    </div>
+    <div class="scrollable-content slds-card__body slds-card__body_inner ">
+        <template if:true={responseData}>
+        <lightning-formatted-rich-text linkify value={responseData}></lightning-formatted-rich-text>
+        </template>
+        <template if:true={showSpace}>
+        <br/>
+        <br/>
+        <br/>
+        </template>
+        <template if:true={showSpinner}>
+        <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+        </template>
+        </div>
+
+        <template lwc:if={isemailsection}>
+            <c-email-lwc body={emailbody}></c-email-lwc>
+        </template>
+</div>
+   
+    </template>
